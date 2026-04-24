@@ -6,14 +6,8 @@
 	},
 	"id": "com.xxisaacofcxx.godfaces",
 	"name": "God Faces",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"developer": "XxIsaacofcxX",
 	"description": "Adiciona God Faces até o top 1000.",
-	"dependencies": [
-		{
-			"id": "geode.node-ids",
-			"version": ">=v1.20.0",
-			"importance": "required"
-		}
-	]
-}
+	"dependencies": []
+

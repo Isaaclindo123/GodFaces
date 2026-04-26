@@ -24,7 +24,7 @@ Essa é toda a lista (:
 
 # Requisitos
 
-- node ids (https://github.com/geode-sdk/NodeIDs)
+- ~~node ids (https://github.com/geode-sdk/NodeIDs)~~
 
 - Geode Launcher (https://github.com/geode-sdk/geode)
 

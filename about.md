@@ -1,30 +1,27 @@
-# About "God Faces"
+# God Faces
+God faces is mod created by Isaaclindo123 (me) and this mod is inspired is Grandpa Demon
 
-God faces é realmente um mod dos sonhos para aqueles que assistiram vídeos de dificuldades do gd, e esse mod promete e muito isso (:
+# Ranks & Faces
+This is the list of all ranks & faces of the god faces:
 
-# Informações
+| Ranks | Faces |
+| ------------ | ------------ |
+|   Top 1  |  Ultra Omega God |
+| < Top 25  | Omega God  |
+| < Top 100 | Ultra God |
+| < Top 250 | Hiper God |
+| < Top 300 | Super God |
+| < Top 500 | The God |
+| < Top 1000 | God |
 
-Esse mod foi produzido com base no ultrasoda.grandpa_demon_revived
+# Credits
 
-Os sprites god foram tiradas pelo site geometry dash fan ideas (https://geometry-dash-fan-ideas.fandom.com/wiki/Sdogsuper%27s_difficulty_spectrum_v2#Debrighteds)
+Credits to [Geometry Dash Fan Ideas](https://geometry-dash-fan-ideas.fandom.com/wiki/Sdogsuper%27s_difficulty_spectrum_v2#Debrighteds) for the icons svg (:
 
-Mod feito com o example-mod
+Inspiraded by [Grandpa Demon Revived](https://github.com/UltraSodaa/GrandpaDemon)
 
-API usada: https://api.aredl.net/v2/api/aredl/pack-tiers
+Credits to [AREDL](https://aredl.net) for the [API](https://api.aredl.net/v2/api/aredl/pack-tiers)
 
-Sprites god convertida de svg para png com convertio
+(: Enjoy the mod
 
-## Sobre o AREDL
-
-O AREDL é um site que dá uma lista dos melhores demons, utilizei uma API para isso
-
-# Incompatibilidades
-
-Detalhadamente, o mod possui uma incompatibilidade com o GRANDPA DEMON, pois tal mod faz isso, só que com demons ou envéis de GOD FACEs
-
-# E essas sao as informações
-
-Obrigado por usar
-
-Feito por: IsaacLindo123
 

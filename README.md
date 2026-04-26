@@ -1,18 +1,17 @@
 # God Faces
-God Faces é um mod brasileiro que adiciona Caras de deus "God Faces" como dificuldades para o GD com AERDL
+God Faces is a Brazilian mod that adds "God Faces" as difficulty levels for God Faces with AERDL.
 
+# What are the GODs?
 
-# Quais são os GODs?
+List of AREDL GODs:
 
-Lista AREDL dos GODs:
-
-- **Ultra Omega God**: Top 1 demons
+- **Ultra Omega God**: Top 1 demon
 
 - **Omega God**: Top 25 demons
 
 - **Ultra God**: Top 100 demons
 
-- **Hiper God**: Top 250 demons
+- **Hyper God**: Top 250 demons
 
 - **Super God**: Top 300 demons
 
@@ -20,25 +19,24 @@ Lista AREDL dos GODs:
 
 - **God**: Top 1000 demons
 
-Essa é toda a lista (:
+This is the entire list (:
 
-# Requisitos
+# Requirements
 
 - ~~node ids (https://github.com/geode-sdk/NodeIDs)~~
 
 - Geode Launcher (https://github.com/geode-sdk/geode)
 
-- Um pc ou celula bão (Esse n tem link)
+- A good PC or phone (This one doesn't have a link)
 
-# Incompatibilidades
+# Incompatibilities
 
-- Grandpa Demon (Itzkiba ou ultra_sodaa)
+- Grandpa Demon (Itzkiba or ultra_sodaa)
 
-## Porque?
+## Why?
 
-Esse mod é tipo ele e se colocado junto ao grandpa demon pode causar instabilidades
+This mod is like If placed next to the Grandpa Demon, it can cause instability.
 
-# E é isso
+# And that's it.
 
-Divirta-se com o mod, feito por: IsaacLindo123 (:
-
+Enjoy the mod, made by: IsaacLindo123 (:

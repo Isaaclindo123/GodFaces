@@ -4,15 +4,21 @@ God faces is mod created by Isaaclindo123 (me) and this mod is inspired is Grand
 # Ranks & Faces
 This is the list of all ranks & faces of the god faces:
 
-| Ranks | Faces |
-| ------------ | ------------ |
-|   Top 1  |  Ultra Omega God |
-| < Top 25  | Omega God  |
-| < Top 100 | Ultra God |
-| < Top 250 | Hiper God |
-| < Top 300 | Super God |
-| < Top 500 | The God |
-| < Top 1000 | God |
+Ranks Faces 
+
+   Top 1 = Ultra Omega God
+
+ < Top 25  = Omega God
+
+ < Top 100 = Ultra God
+
+ < Top 250 = Hiper God
+
+ < Top 300 = Super God
+
+ < Top 500 = The God
+
+ < Top 1000 = God
 
 # Credits
 

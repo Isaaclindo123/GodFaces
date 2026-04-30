@@ -4,12 +4,8 @@
 
 using namespace geode::prelude;
 
-// ==========================
-// Armazena ranks
 std::map<int, int> levelRank;
 
-// ==========================
-// Tier por rank
 std::string getGodTier(int rank) {
     if (rank == 1) return "Ultra Omega God";
     if (rank <= 25) return "Omega God";
@@ -21,8 +17,6 @@ std::string getGodTier(int rank) {
     return "";
 }
 
-// ==========================
-// Sprite por rank
 std::string getGodSprite(int rank) {
     if (rank == 1) return "brilliance.png";
     if (rank <= 25) return "wise.png";
@@ -34,8 +28,6 @@ std::string getGodSprite(int rank) {
     return "";
 }
 
-// ==========================
-// Carregar API AERDL (numa thread separada pra não travar o jogo)
 void loadFromAPI() {
     std::thread([]() {
         auto res = web::WebRequest().getSync("https://api.aredl.net/v2/api/aredl/pack-tiers");
@@ -51,17 +43,28 @@ void loadFromAPI() {
             return;
         }
 
-        auto& data = jsonResult.unwrap();
-        if (!data.isArray()) {
-            log::error("JSON não é um array!");
-            return;
-        }
+        auto& tiers = jsonResult.unwrap();
+        if (!tiers.isArray()) return;
 
-        for (auto& lvl : data.asArray().unwrap()) {
-            auto idRes = lvl["id"].asInt();
-            auto rankRes = lvl["rank"].asInt();
-            if (idRes && rankRes) {
-                levelRank[idRes.unwrap()] = rankRes.unwrap();
+        for (auto& tier : tiers.asArray().unwrap()) {
+            if (!tier["packs"].isArray()) continue;
+
+            for (auto& pack : tier["packs"].asArray().unwrap()) {
+                if (!pack["levels"].isArray()) continue;
+
+                for (auto& lvl : pack["levels"].asArray().unwrap()) {
+                    auto idRes = lvl["level_id"].asInt();
+                    auto rankRes = lvl["position"].asInt();
+
+                    if (idRes && rankRes) {
+                        int id = idRes.unwrap();
+                        int rank = rankRes.unwrap();
+
+                        if (levelRank.find(id) == levelRank.end() || rank < levelRank[id]) {
+                            levelRank[id] = rank;
+                        }
+                    }
+                }
             }
         }
 
@@ -69,8 +72,6 @@ void loadFromAPI() {
     }).detach();
 }
 
-// ==========================
-// Hook no Level Info
 class $modify(MyLevelInfoLayer, LevelInfoLayer) {
     bool init(GJGameLevel* level, bool p1) {
         if (!LevelInfoLayer::init(level, p1)) return false;
@@ -79,31 +80,27 @@ class $modify(MyLevelInfoLayer, LevelInfoLayer) {
 
         if (levelRank.count(levelID)) {
             int rank = levelRank[levelID];
-
             auto tier = getGodTier(rank);
+            auto size = CCDirector::sharedDirector()->getWinSize();
 
-            auto label = CCLabelBMFont::create(
-                tier.c_str(),
-                "goldFont.fnt"
-            );
-            label->setScale(0.6f);
-            label->setPosition({200, 80});
-            this->addChild(label);
-
-            auto sprite = CCSprite::create(getGodSprite(rank).c_str());
+            auto spritePath = Mod::get()->getResourcesDir() / getGodSprite(rank);
+            auto sprite = CCSprite::create(spritePath.string().c_str());
             if (sprite) {
                 sprite->setScale(0.5f);
-                sprite->setPosition({200, 130});
-                this->addChild(sprite);
+                sprite->setPosition({size.width / 2, size.height / 2 + 50});
+                this->addChild(sprite, 10);
             }
+
+            auto label = CCLabelBMFont::create(tier.c_str(), "goldFont.fnt");
+            label->setScale(0.6f);
+            label->setPosition({size.width / 2, size.height / 2 + 20});
+            this->addChild(label, 10);
         }
 
         return true;
     }
 };
 
-// ==========================
-// Inicialização do mod
 $on_mod(Loaded) {
     std::vector<std::string> incompatibleMods = {
         "ultrasoda.grandpa_demon_revived",
@@ -113,11 +110,7 @@ $on_mod(Loaded) {
     for (auto& mod : incompatibleMods) {
         if (Loader::get()->isModLoaded(mod)) {
             std::string msg = "Conflito com: " + mod;
-            FLAlertLayer::create(
-                "Incompatibility",
-                msg.c_str(),
-                "OK"
-            )->show();
+            FLAlertLayer::create("Incompatibility", msg.c_str(), "OK")->show();
             break;
         }
     }

@@ -1,3 +1,6 @@
+# 1.0.3
+- Fixed one TENEBROUS bug and retorned to normal :)
+
 # 1.0.2
 - I changed the icon of the mod and fixed the api error :)
 

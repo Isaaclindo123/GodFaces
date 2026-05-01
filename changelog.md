@@ -1,3 +1,6 @@
+# 1.0.4
+- Fixed the STUPID MAIN.CPP AAAAAAAAAAAAAAAA
+
 # 1.0.3
 - Fixed one TENEBROUS bug and retorned to normal :)
 

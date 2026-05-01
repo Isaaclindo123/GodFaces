@@ -48,18 +48,14 @@ void loadFromAPI() {
 
         for (auto& tier : tiers.asArray().unwrap()) {
             if (!tier["packs"].isArray()) continue;
-
             for (auto& pack : tier["packs"].asArray().unwrap()) {
                 if (!pack["levels"].isArray()) continue;
-
                 for (auto& lvl : pack["levels"].asArray().unwrap()) {
                     auto idRes = lvl["level_id"].asInt();
                     auto rankRes = lvl["position"].asInt();
-
                     if (idRes && rankRes) {
                         int id = idRes.unwrap();
                         int rank = rankRes.unwrap();
-
                         if (levelRank.find(id) == levelRank.end() || rank < levelRank[id]) {
                             levelRank[id] = rank;
                         }
@@ -82,18 +78,25 @@ class $modify(MyLevelInfoLayer, LevelInfoLayer) {
             int rank = levelRank[levelID];
             auto tier = getGodTier(rank);
 
-            auto spriteName = getGodSprite(rank);
-            auto spritePath = Mod::get()->getResourcesDir() / spriteName;
+            // Esconde o ícone de dificuldade original
+            auto diffIcon = this->getChildByID("difficulty-sprite");
+            if (diffIcon) diffIcon->setVisible(false);
+
+            // Sprite do God Faces no lugar da dificuldade
+            auto spritePath = Mod::get()->getResourcesDir() / getGodSprite(rank);
             auto sprite = CCSprite::create(spritePath.string().c_str());
             if (sprite) {
-                sprite->setScale(0.5f);
-                sprite->setPosition({200, 260});
+                sprite->setScale(1.0f);
+                sprite->setPosition({195, 225});
                 this->addChild(sprite, 10);
+            } else {
+                log::error("Sprite não encontrado: {}", spritePath.string());
             }
 
+            // Label do tier abaixo do sprite
             auto label = CCLabelBMFont::create(tier.c_str(), "goldFont.fnt");
-            label->setScale(0.6f);
-            label->setPosition({200, 215});
+            label->setScale(0.55f);
+            label->setPosition({195, 168});
             this->addChild(label, 10);
         }
 

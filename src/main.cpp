@@ -81,19 +81,19 @@ class $modify(MyLevelInfoLayer, LevelInfoLayer) {
         if (levelRank.count(levelID)) {
             int rank = levelRank[levelID];
             auto tier = getGodTier(rank);
-            auto size = CCDirector::sharedDirector()->getWinSize();
 
-            auto spritePath = Mod::get()->getResourcesDir() / getGodSprite(rank);
+            auto spriteName = getGodSprite(rank);
+            auto spritePath = Mod::get()->getResourcesDir() / spriteName;
             auto sprite = CCSprite::create(spritePath.string().c_str());
             if (sprite) {
                 sprite->setScale(0.5f);
-                sprite->setPosition({size.width / 2, size.height / 2 + 50});
+                sprite->setPosition({200, 260});
                 this->addChild(sprite, 10);
             }
 
             auto label = CCLabelBMFont::create(tier.c_str(), "goldFont.fnt");
             label->setScale(0.6f);
-            label->setPosition({size.width / 2, size.height / 2 + 20});
+            label->setPosition({200, 215});
             this->addChild(label, 10);
         }
 
@@ -102,6 +102,9 @@ class $modify(MyLevelInfoLayer, LevelInfoLayer) {
 };
 
 $on_mod(Loaded) {
+    auto searchPath = Mod::get()->getResourcesDir().string();
+    cocos2d::CCFileUtils::sharedFileUtils()->addSearchPath(searchPath.c_str());
+
     std::vector<std::string> incompatibleMods = {
         "ultrasoda.grandpa_demon_revived",
         "itzkiba.grandpa_demon"
